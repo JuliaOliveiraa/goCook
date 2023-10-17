@@ -10,13 +10,15 @@ body {
 
 .jumbotron {
     position: relative;
-    background-image: url('img/almoco.jpg');
+    background-image: url('img\homePrincipal.jpg');
+    background-position: center center;
     background-size: cover;
     height: 400px;
     color: #fff;
     margin-bottom: 0;
     margin-top: 0;
     border: 0;
+    display: flex;
 }
 
 .overlay {
@@ -38,6 +40,22 @@ body {
     padding-top: 70px;
 }
 
+img.logo {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Isso garante que a imagem não tenha margens extras */
+    margin: auto; /* Centraliza a imagem dentro do contêiner */
+}
+
 .container-fluid{
     padding: 0 0 0 0;
+}
+
+.nav-item{
+    font-size: 20px;
+    padding-bottom: 0px;
+}
+
+.navbar-collapse{
+    border-bottom: 0px;
 }
