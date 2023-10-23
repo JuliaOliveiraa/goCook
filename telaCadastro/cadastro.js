@@ -5,9 +5,9 @@ let nome = document.querySelector("#nome");
 let labelNome = document.querySelector("#labelNome");
 let validNome = false;
 
-let usuario = document.querySelector("#usuario");
-let labelUsuario = document.querySelector("#labelUsuario");
-let validUsuario = false;
+let email = document.querySelector("#usuario");
+let labelEmail = document.querySelector("#labelUsuario");
+let validEmail = false;
 
 let senha = document.querySelector("#senha");
 let labelSenha = document.querySelector("#labelSenha");
@@ -34,17 +34,17 @@ nome.addEventListener("keyup", () => {
   }
 });
 
-usuario.addEventListener("keyup", () => {
-  if (usuario.value.length <= 4) {
-    labelUsuario.setAttribute("style", "color: red");
-    labelUsuario.innerHTML = "Usuário *Insira no minimo 5 caracteres";
-    usuario.setAttribute("style", "border-color: red");
-    validUsuario = false;
+email.addEventListener("keyup", () => {
+  if (email.value.length <= 4) {
+    labelEmail.setAttribute("style", "color: red");
+    labelEmail.innerHTML = "Usuário *Insira no minimo 5 caracteres";
+    email.setAttribute("style", "border-color: red");
+    validEmail = false;
   } else {
-    labelUsuario.setAttribute("style", "color: green");
-    labelUsuario.innerHTML = "Usuário";
-    usuario.setAttribute("style", "border-color: green");
-    validUsuario = true;
+    labelEmail.setAttribute("style", "color: green");
+    labelEmail.innerHTML = "Usuário";
+    email.setAttribute("style", "border-color: green");
+    validEmail = true;
   }
 });
 
@@ -77,12 +77,12 @@ confirmSenha.addEventListener("keyup", () => {
 });
 
 function cadastrar() {
-  if (validNome && validUsuario && validSenha && validConfirmSenha) {
+  if (validNome && validEmail && validSenha && validConfirmSenha) {
     let listaUser = JSON.parse(localStorage.getItem("listaUser") || "[]");
 
     listaUser.push({
       nomeCad: nome.value,
-      userCad: usuario.value,
+      emailCad: email.value,
       senhaCad: senha.value,
     });
 
