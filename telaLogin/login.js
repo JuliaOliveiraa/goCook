@@ -26,7 +26,7 @@ function entrar(){
     senha: ''
   }
   
-  listaEmail = JSON.parse(localStorage.getItem('listaEmail'))
+  let listaEmail = JSON.parse(localStorage.getItem('listaEmail'))
   
   listaEmail.forEach((item) => {
     if(email.value == item.userCad && senha.value == item.senhaCad){
@@ -41,7 +41,7 @@ function entrar(){
   })
    
   if(email.value == emailValid.email && senha.value == emailValid.senha){
-    window.location.href = 'index.html'
+    window.location.href = '/index.html'
     
     let mathRandom = Math.random().toString(16).substr(2)
     let token = mathRandom + mathRandom
@@ -57,6 +57,5 @@ function entrar(){
     msgError.innerHTML = 'Usuário ou senha incorretos'
     usuario.focus()
   }
-  
 }
 
