@@ -1,3 +1,5 @@
+// import config from '../config.js';
+
 let nome = document.querySelector("#nome");
 let labelNome = document.querySelector("#labelNome");
 let validNome = false;
@@ -20,24 +22,24 @@ let msgSuccess = document.querySelector("#msgSuccess");
 let btnEyePassword = document.getElementById('verSenha')
 let btnEyeConfirmPassword = document.getElementById('verConfirmSenha')
 
-btnEyePassword.addEventListener('click', ()=>{
+btnEyePassword.addEventListener('click', () => {
   let inputSenha = document.querySelector('#senha')
 
-  
-  if(inputSenha.getAttribute('type') == 'password'){
+
+  if (inputSenha.getAttribute('type') == 'password') {
     inputSenha.setAttribute('type', 'text')
   } else {
     inputSenha.setAttribute('type', 'password')
   }
 })
 
-btnEyeConfirmPassword.addEventListener('click', ()=>{
+btnEyeConfirmPassword.addEventListener('click', () => {
   let inputConfirmSenha = document.querySelector('#confirmSenha')
 
-  if(inputConfirmSenha.getAttribute('type') == 'password'){
+  if (inputConfirmSenha.getAttribute('type') == 'password') {
     inputConfirmSenha.setAttribute('type', 'text')
   } else {
-    inputConfirmSenha.setAttribute('type','password')
+    inputConfirmSenha.setAttribute('type', 'password')
   }
 })
 
@@ -126,5 +128,38 @@ function cadastrar() {
     msgSuccess.innerHTML = "";
     msgSuccess.setAttribute("style", "display: none");
   }
+
+  // ...
+
+  fetch(`https://gocook.azurewebsites.net/api/usuarios`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      nm_Usuario: nome,
+      nm_Email: email,
+      ds_Senha: senha,
+    }),
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Falha no cadastro');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Limpar mensagens de erro e exibir mensagem de sucesso
+      document.getElementById('msgError').innerHTML = '';
+      document.getElementById('msgSuccess').innerHTML = 'Cadastro realizado com sucesso!';
+    })
+    .catch(error => {
+      console.error('Erro:', error);
+      document.getElementById('msgError').innerHTML = 'Erro ao cadastrar. Tente novamente.';
+    });
+
 }
+
+
+console.log('Script cadastro.js carregado.');
 
