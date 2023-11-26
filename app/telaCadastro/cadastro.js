@@ -137,11 +137,12 @@ function cadastrar() {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      nm_Usuario: nome,
-      nm_Email: email,
-      ds_Senha: senha,
+      nm_Usuario: nome.value,
+      nm_Email: email.value,
+      ds_Senha: senha.value,
     }),
   })
+  
     .then(response => {
       if (!response.ok) {
         throw new Error('Falha no cadastro');
